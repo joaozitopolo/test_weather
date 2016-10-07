@@ -1,9 +1,14 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
+        <title>Test Weather</title>
         <link rel="stylesheet" type="text/css" href="public/foundation6.min.css">
+        <link rel="stylesheet" type="text/css" href="public/angular1.5.8-csp.css">
         <link rel="stylesheet" type="text/css" href="app/app.css">
-        <script data-main="app/bootstrap.js" src="public/require2.3.2.js"></script>
     </head>
     <body>
+        <ng-include src="'app/templates/top.html'"></ng-include>
+        <ng-view></ng-view>
+        <script type="text/javascript" data-main="app/index.bootstrap.js" src="public/require2.3.2.js"></script>
     </body>
 </html>
