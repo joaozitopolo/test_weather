@@ -1,0 +1,19 @@
+{
+  "name": "test_weather",
+  "version": "1.0.0",
+  "description": "Test Access to OpenWeather service with Angular1.x",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joaozitopolo/test_weather.git"
+  },
+  "author": "joaozito.polo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joaozitopolo/test_weather/issues"
+  },
+  "homepage": "https://github.com/joaozitopolo/test_weather#readme"
+}
