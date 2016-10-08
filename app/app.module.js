@@ -1,12 +1,12 @@
-define(function(require, exports, module) {
-
-    var angular = require('angular');
+define(function(require) {
 
     require('angular-route');
 
-    module.app = angular.module('app', [ 'ngRoute' ]);
-
-    require('app.routes.config');
+    var app = require('angular').module('app', [ 'ngRoute' ]);
+    app.config(require('app.routes.config'));
+    app.service('Geolocation', require('geolocation.service'));
+    app.service('Weather', require('weather.service'));
+    app.controller('Authorization', require('authorization.controller'));
 
     return 'app';
 
