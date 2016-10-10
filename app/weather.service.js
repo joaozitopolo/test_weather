@@ -4,21 +4,25 @@ define(function(require) {
 
         var self = this;
         self.data = {};
-
-        /** try to capture the current location. If localized, shows the weather. Else, will ask for localization */
-        function allow() {
-            Geolocation.getLocation().then(function(coords) {
-                self.data = angular.extend({}, coords);
-                $window.location = '#/weather';
-            }, function(data) {
-                self.data = angular.extend({}, data);
-            });
-        }
-
-        /** ask for localization */
-        function deny() {
-            $window.location = '#/local'
-        }
+        self.allow = function() { return allow($window, Geolocation, self.data); };
+        self.deny = function() { return deny($window); };
 
     }
+
+    /** try to capture the current location. If localized, shows the weather. Else, will ask for localization */
+    function allow($window, Geolocation, data) {
+        data.loading = true;
+        Geolocation.getLocation().then(function(coords) {
+            angular.extend(data, coords, { loading: false });
+            $window.location = '#/weather';
+        }, function(errorCause) {
+            angular.extend(data, errorCause, { loading: false });
+        });
+    }
+
+    /** ask for localization */
+    function deny($window) {
+        $window.location = '#/local'
+    }
+
 });

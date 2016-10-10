@@ -8,8 +8,8 @@ define(function() {
                 if(navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(function(position) {
                         resolve(position.coords);
-                    }, function() {
-                        reject({ error: 'not allowed' });
+                    }, function(error) {
+                        reject({ error: 'not allowed (' + error.message + ')' });
                     })
                 } else {
                     reject({ error: 'old browser' });
