@@ -5,13 +5,12 @@ define(function() {
         var self = this;
         self.data = {};
         Geolocation.locate(self.data);
-        $scope.$watch(function() { return self.data }, function(data) { observe($window, data); });
+        $scope.$watch(function() { return self.data['status'] }, function(status) { observe(status, self.data, $window, Weather); });
     };
 
     /** update current route for current status */
-    function observe($window, data) {
-        console.log(data['status']);
-        switch(data['status']) {
+    function observe(status, data, $window, Weather) {
+        switch(status) {
             case 'LOCATED':
                 Weather.setLocation(data.latitude, data.longitude);
                 $window.location = '#/weather';
