@@ -2,12 +2,14 @@ define(function() {
 
     return function($q) {
         var self = this;
-        self.data = { };
         self.locatePromise = function() { return locatePromise($q); };
-        self.locate = function() { locate($q, self.data); };
+        self.locate = function(data) { locate(data, $q); };
     }
 
-    /** try to retrieve the global coordinates for the user */
+    /** retrieve the global coordinates for the user 
+     * the resolve will be called with the coordinates { latitude, longitude }
+     * the reject will be called with the error cause { error }
+    */
     function locatePromise($q) {
         return $q(function(resolve, reject) {
             if(navigator.geolocation) {
@@ -22,12 +24,13 @@ define(function() {
         });
     }
 
-    /** execute the locatePromise and store the data retrieved */
-    function locate($q, data) {
-        data.status = 'LOCATE';
+    /** execute the locatePromise and store the data retrieved 
+     * the data will be updated with { status: 'LOCATE' | 'DENIED'} or { status: 'LOCATED', latitude, longitude }
+    */
+    function locate(data, $q) {
+        angular.extend(data, { status: 'LOCATE', latitude: undefined, longitude: undefined });
         locatePromise($q).then(function(coords) {
             angular.extend(data, coords, { status: 'LOCATED' });
-            console.log(data);
         }, function(errorCause) {
             angular.extend(data, errorCause, { status: 'DENIED' });
         });
