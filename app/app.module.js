@@ -7,6 +7,7 @@ define(function(require) {
     app.service('Geolocation', require('geolocation.service'));
     app.service('Weather', require('weather.service'));
     app.controller('Authorization', require('authorization.controller'));
+    app.controller('Localization', require('localization.controller'));
     app.controller('Weather', require('weather.controller'));
     app.component('appThumb', require('app-thumb.component'));
 

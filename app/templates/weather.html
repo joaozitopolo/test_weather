@@ -1,12 +1,10 @@
 
 <div class="row columns text-right actions">
-
     <a ng-click="$ctrl.switchType()">
         <span ng-class="$ctrl.data.type == 'C' ? 'active' : '' ">°C</span>
         <span>/</span>
         <span ng-class="$ctrl.data.type == 'F' ? 'active' : '' ">°F</span>
     </a>
-
 </div>
 
 <div class="row pictures">
@@ -17,15 +15,9 @@
     </div>
 </div>
 
-
-
-
 <div class="row column text-center numbers">
-
-        <span>Min</span>
-        <span class="temp tempMin" ng-bind="$ctrl.data.tempMin"></span>
-        <span>Max</span>
-        <span class="temp tempMax" ng-bind="$ctrl.data.tempMax"></span>
-
+    <span>Min</span>
+    <span class="temp tempMin" ng-bind="$ctrl.data.tempMin"></span>
+    <span>Max</span>
+    <span class="temp tempMax" ng-bind="$ctrl.data.tempMax"></span>
 </div>
-

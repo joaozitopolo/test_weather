@@ -1,10 +1,10 @@
 
 /* definitions for requirejs */
 require.config({
-    baseUrl: '/app',
+    baseUrl: './app',
     paths: {
-        angular: '/public/angular1.5.8.min',
-        'angular-route': '/public/angular1.5.8-route.min'
+        angular: '../public/angular1.5.8.min',
+        'angular-route': '../public/angular1.5.8-route.min'
     },
     shim: {
         angular: {
