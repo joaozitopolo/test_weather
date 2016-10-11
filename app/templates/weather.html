@@ -1,5 +1,69 @@
-<div class="row column text-center">
-    <p>weather data</p>
+
+<div class="row columns text-right actions">
+
+    <a ng-click="$ctrl.switchType()">
+        <span ng-class="$ctrl.data.type == 'C' ? 'active' : '' ">°C</span>
+        <span>/
+        <span ng-class="$ctrl.data.type == 'F' ? 'active' : '' ">°F</span>
+    </a>
+
 </div>
 
-{{ $ctrl.data }}
+<div class="row pictures">
+    <div class="small-6 small-push-3 columns">
+        <div class="row">
+            <div class="small-2 columns" ng-class="{ off: !$ctrl.data.hasSun }">
+                <div class="pic">
+                    <div class="hover"></div>
+                    <img class="thumbnail" src="public/resources/sun.jpg">
+                </div>
+                <div class="subtitle">Sun</div>
+            </div>
+            <div class="small-2 columns" ng-class="{ off: !$ctrl.data.hasCloud }">
+                <div class="pic">
+                    <div class="hover"></div>
+                    <img class="thumbnail" src="public/resources/cloud.jpg">
+                </div>
+                <div class="subtitle">Clouds</div>
+            </div>
+            <div class="small-2 columns" ng-class="{ off: !$ctrl.data.hasRain }">
+                <div class="pic">
+                    <div class="hover"></div>
+                    <img class="thumbnail" src="public/resources/rain.jpg">
+                </div>
+                <div class="subtitle">Rain</div>
+            </div>
+            <div class="small-2 columns" ng-class="{ off: !$ctrl.data.hasThunder }">
+                <div class="pic">
+                    <div class="hover"></div>
+                    <img class="thumbnail" src="public/resources/thunder.jpg">
+                </div>
+                <div class="subtitle">Storm</div>
+            </div>
+            <div class="small-2 columns" ng-class="{ off: !$ctrl.data.hasCold }">
+                <div class="pic">
+                    <div class="hover"></div>
+                    <img class="thumbnail" src="public/resources/cold.jpg">
+                </div>
+                <div class="subtitle">Cold</div>
+            </div>
+            <div class="small-2 columns" ng-class="{ off: !$ctrl.data.hasWarm }">
+                <div class="pic">
+                    <div class="hover"></div>
+                    <img class="thumbnail" src="public/resources/warm.jpg">
+                </div>
+                <div class="subtitle">Warm</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row column text-center numbers">
+
+        <span>Min</span>
+        <span class="temp tempMin" ng-bind="$ctrl.data.tempMin"></span>
+        <span>Max</span>
+        <span class="temp tempMax" ng-bind="$ctrl.data.tempMax"></span>
+
+</div>
+
