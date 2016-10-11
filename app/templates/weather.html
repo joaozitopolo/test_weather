@@ -3,7 +3,7 @@
 
     <a ng-click="$ctrl.switchType()">
         <span ng-class="$ctrl.data.type == 'C' ? 'active' : '' ">°C</span>
-        <span>/
+        <span>/</span>
         <span ng-class="$ctrl.data.type == 'F' ? 'active' : '' ">°F</span>
     </a>
 
@@ -12,51 +12,13 @@
 <div class="row pictures">
     <div class="small-6 small-push-3 columns">
         <div class="row">
-            <div class="small-2 columns" ng-class="{ off: !$ctrl.data.hasSun }">
-                <div class="pic">
-                    <div class="hover"></div>
-                    <img class="thumbnail" src="public/resources/sun.jpg">
-                </div>
-                <div class="subtitle">Sun</div>
-            </div>
-            <div class="small-2 columns" ng-class="{ off: !$ctrl.data.hasCloud }">
-                <div class="pic">
-                    <div class="hover"></div>
-                    <img class="thumbnail" src="public/resources/cloud.jpg">
-                </div>
-                <div class="subtitle">Clouds</div>
-            </div>
-            <div class="small-2 columns" ng-class="{ off: !$ctrl.data.hasRain }">
-                <div class="pic">
-                    <div class="hover"></div>
-                    <img class="thumbnail" src="public/resources/rain.jpg">
-                </div>
-                <div class="subtitle">Rain</div>
-            </div>
-            <div class="small-2 columns" ng-class="{ off: !$ctrl.data.hasThunder }">
-                <div class="pic">
-                    <div class="hover"></div>
-                    <img class="thumbnail" src="public/resources/thunder.jpg">
-                </div>
-                <div class="subtitle">Storm</div>
-            </div>
-            <div class="small-2 columns" ng-class="{ off: !$ctrl.data.hasCold }">
-                <div class="pic">
-                    <div class="hover"></div>
-                    <img class="thumbnail" src="public/resources/cold.jpg">
-                </div>
-                <div class="subtitle">Cold</div>
-            </div>
-            <div class="small-2 columns" ng-class="{ off: !$ctrl.data.hasWarm }">
-                <div class="pic">
-                    <div class="hover"></div>
-                    <img class="thumbnail" src="public/resources/warm.jpg">
-                </div>
-                <div class="subtitle">Warm</div>
-            </div>
+            <app-thumb ng-repeat="v in $ctrl.views" active="$ctrl.data[v[0]]" src="'public/resources/' + v[1]" title="v[2]"></app-thumb> 
         </div>
     </div>
 </div>
+
+
+
 
 <div class="row column text-center numbers">
 

@@ -8,6 +8,15 @@ define(function() {
 
         $scope.$watch(function() { return Weather.data['status']; }, function(status) { observe(status, self.data, Weather.data); });
 
+        self.views = [
+            ['hasSun', 'sun.jpg', 'Sun'],
+            ['hasCloud', 'cloud.jpg', 'Clouds'],
+            ['hasRain', 'rain.jpg', 'Rain'],
+            ['hasThunder', 'thunder.jpg', 'Storm'],
+            ['hasCold', 'cold.jpg', 'Cold'],
+            ['hasWarm', 'warm.jpg', 'Warm']
+        ];
+
         // TODO: remove after test
         self.data = {type: 'C', "latitude":-29.7549941,"longitude":-51.150283,"status":"OK","coord":{"lon":-51.15,"lat":-29.76},
         "weather":[
