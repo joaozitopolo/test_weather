@@ -20,7 +20,7 @@ define(function(require) {
         var args = "?q=" + encodeURIComponent(address) + "," + country + "&APPID=b2cc0479a61b2a6e145fddca11691478" + "&callback=JSON_CALLBACK";
         $http({
             method: 'JSONP',
-            url: 'http://api.openweathermap.org/data/2.5/weather' + args,
+            url: '//api.openweathermap.org/data/2.5/weather' + args,
         }).then(function(response) {
             console.log(response);
             angular.extend(data, response.data, { status: 'OK' });
@@ -35,7 +35,7 @@ define(function(require) {
         var args = "?lat=" + data.latitude + "&lon=" + data.longitude + "&APPID=b2cc0479a61b2a6e145fddca11691478" + "&callback=JSON_CALLBACK";
         $http({
             method: 'JSONP',
-            url: 'http://api.openweathermap.org/data/2.5/weather' + args,
+            url: '//api.openweathermap.org/data/2.5/weather' + args,
         }).then(function(response) {
             console.log(response);
             angular.extend(data, response.data, { status: 'OK' });
