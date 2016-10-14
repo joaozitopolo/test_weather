@@ -16,6 +16,7 @@ define(function() {
                 $window.location = '#/weather';
                 break;
             case 'DENIED':
+                Weather.data.status = 'LOCAL';
                 $window.location = '#/local';
                 break;
         }

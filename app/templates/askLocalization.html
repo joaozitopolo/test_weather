@@ -1,24 +1,28 @@
-<div class="row small-6 column">
+<div class="row medium-6 medium-push-2 column">
     <p>Search by Localization</p>
-    <form>
-        <div class="row">
-            <div class="medium-6 column">
-                <div>
-                    <label>ZipCode or City Name
-                        <input type="text">
-                    </label>
-                </div>
-                <div>
-                    <label>Country
-                        <input type="text">
-                    </label>
-                </div>
-                <div>
-                    <button class="button">Submit</button>
-                </div>
-            </div>
-        </div>
-    </form>
 </div>
 
-{{ $ctrl.data }}
+<form name="askLocalization" ng-submit="$ctrl.search()" novalidate>
+    <div class="row">
+        <div class="medium-4 medium-offset-3 column">
+            <label>ZipCode or City Name
+                <input type="text" ng-model="$ctrl.data.address"/>
+            </label>
+        </div>
+        <div class="medium-2 column end">
+            <label>Country
+                <select ng-model="$ctrl.data.country" ng-options="c.value as c.label for c in $ctrl.countries"></select>
+            </label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="medium-6 medium-offset-3 column">
+            <button type="submit" class="button">Submit</button>
+        </div>
+    </div>
+</form>
+
+<div class="row small-6 small-offset-3 column">
+    <p>If you want to back to the localization question, you need to clear your previous localization answer at the browser icon, and then refresh the page:</p>
+    <img src="./public/resources/localization.jpg"/>
+</div>

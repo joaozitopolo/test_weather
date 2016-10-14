@@ -1,12 +1,19 @@
 define(function() {
 
-    /** basic controls for authorization page */
+    /** controls for weather page */
     return function($window, $scope, Weather) {
         var self = this;
-        self.data = { type: 'C' };
+        self.data = { };
+        self.data.type = 'C'; // temp scale: 'C'elsius | 'F'ahrenheit
         self.switchType = function() { switchType(self.data); };
+        self.changeLocal = function() { Weather.data.status = 'LOCAL'; }
 
-        $scope.$watch(function() { return Weather.data['status']; }, function(status) { observe(status, self.data, Weather.data); });
+        // test for page refresh
+        if(!Weather.active())  {
+            $window.location = '#/';
+        }
+
+        $scope.$watch(function() { return Weather.data['status']; }, function(status) { observe(status, self.data, Weather.data, $window); });
 
         self.views = [
             ['hasSun', 'sun.jpg', 'Sun'],
@@ -17,21 +24,17 @@ define(function() {
             ['hasWarm', 'warm.jpg', 'Warm']
         ];
 
-        // TODO: remove after test
-        self.data = {type: 'C', "latitude":-29.7549941,"longitude":-51.150283,"status":"OK","coord":{"lon":-51.15,"lat":-29.76},
-        "weather":[
-                {"id":803,"main":"Clouds","description":"broken clouds","icon":"04d"}
-            ],
-        "base":"stations","main":{"temp":293.263,"pressure":1024.1,"humidity":47,"temp_min":293.263,"temp_max":293.263,"sea_level":1032.94,"grnd_level":1024.1},"wind":{"speed":7.03,"deg":102.001},"clouds":{"all":56},"dt":1476129599,"sys":{"message":0.0157,"country":"BR","sunrise":1476089453,"sunset":1476135121},"id":3448622,"name":"Sao Leopoldo","cod":200};
-        decode(self.data);
     };
 
-    function observe(status, data, weatherData) {
+    function observe(status, data, weatherData, $window) {
         switch(status) {
             case 'OK':
                 // merges the weather data, and decodes the weather information
                 angular.extend(data, weatherData);
                 decode(data);
+                break;
+            case 'LOCAL': 
+                $window.location = '#/local';
                 break;
         }
     }
@@ -69,5 +72,6 @@ define(function() {
         }
         return Math.round(out * 10) / 10.0; 
     }
+
 
 });

@@ -1,5 +1,6 @@
 
-.actions a { font-weight: bold; font-size: 1.4em; color: #ddd; }
+.actions a { margin-left: 1em; }
+.actions a.type { font-weight: bold; font-size: 1.4em; color: #ddd; }
 .actions .active { color: #000; }
 
 .numbers .temp { font-size: 4em; font-weight: bold; margin: 1em; }
