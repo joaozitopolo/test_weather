@@ -13,11 +13,16 @@ define(function() {
     function locatePromise($q) {
         return $q(function(resolve, reject) {
             if(navigator.geolocation) {
+                var options = {
+                    enableHighAccuracy: true,
+                    timeout: 5000,
+                    maximumAge: 0
+                };
                 navigator.geolocation.getCurrentPosition(function(position) {
                     resolve({ latitude: position.coords.latitude, longitude: position.coords.longitude });
                 }, function(error) {
-                    reject({ error: 'not allowed (' + error.message + ')' });
-                })
+                    reject({ error: 'not allowed (' + (error && error['message']) + ')' });
+                }, options);
             } else {
                 reject({ error: 'incompatible browser' });
             }
